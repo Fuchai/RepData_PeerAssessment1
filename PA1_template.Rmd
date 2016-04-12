@@ -106,7 +106,7 @@ cpy<-mutate(cpy,date=activity$date,POSIXdate=activity$POSIXdate)
 ```
 
 Make a histogram of the total number of steps taken each day 
-```{r histogram of the filled}
+```{r histogram of the filled, message=F}
 stepsPerDay2<-summarize(group_by(cpy,POSIXdate),sum(steps))
 qplot(stepsPerDay2[,`sum(steps)`],xlab = "Steps Per Day with NA imptued")
 ```
@@ -140,7 +140,7 @@ weekend<-summarize(group_by(weekend,interval),mean(steps))
 ```
 
 Plot the two graphs together to see the difference.
-```{r ggplot2 weekday weekend}
+```{r ggplot2 weekday weekend, message=F}
 library(grid)
 library(gridExtra)
 p1<-ggplot()+geom_line(data=weekday,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekday interval")+scale_x_datetime(date_labels = "%H:%M")

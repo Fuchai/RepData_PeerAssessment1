@@ -155,10 +155,6 @@ stepsPerDay2<-summarize(group_by(cpy,POSIXdate),sum(steps))
 qplot(stepsPerDay2[,`sum(steps)`],xlab = "Steps Per Day with NA imptued")
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](PA1_template_files/figure-html/histogram of the filled-1.png)
 
 Compare the new graph with the old one, we can see that peak at 0 disappeared, and the distribution move towards the middle.
@@ -208,20 +204,6 @@ Plot the two graphs together to see the difference.
 ```r
 library(grid)
 library(gridExtra)
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
-```
-
-```r
 p1<-ggplot()+geom_line(data=weekday,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekday interval")+scale_x_datetime(date_labels = "%H:%M")
 p2<-ggplot()+geom_line(data=weekend,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekend interval")+scale_x_datetime(date_labels = "%H:%M")
 grid.arrange(p1,p2,nrow=2,top="Activity patterns of weekdays and weekeneds")
