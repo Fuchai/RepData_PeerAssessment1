@@ -204,8 +204,8 @@ Plot the two graphs together to see the difference.
 ```r
 library(grid)
 library(gridExtra)
-p1<-ggplot()+geom_line(data=weekday,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekday interval")+scale_x_datetime(date_labels = "%H:%M")
-p2<-ggplot()+geom_line(data=weekend,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekend interval")+scale_x_datetime(date_labels = "%H:%M")
+p1<-ggplot()+geom_line(data=weekday,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekday interval")+scale_x_datetime(date_labels = "%H:%M")+ylim(0,250)
+p2<-ggplot()+geom_line(data=weekend,aes(x=`interval`,y=`mean(steps)`))+ylab("average steps")+xlab("weekend interval")+scale_x_datetime(date_labels = "%H:%M")+ylim(0,250)
 grid.arrange(p1,p2,nrow=2,top="Activity patterns of weekdays and weekeneds")
 ```
 
